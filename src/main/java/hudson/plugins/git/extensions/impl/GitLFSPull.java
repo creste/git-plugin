@@ -29,18 +29,10 @@ public class GitLFSPull extends GitSCMExtension {
     }
 
     @Override
-    public void decorateFetchCommand(GitSCM scm, GitClient git, TaskListener listener, FetchCommand cmd) throws IOException, InterruptedException, GitException {
-        listener.getLogger().println("Enabling Git LFS fetch");
-        cmd.withLFS();
-    }
-
-    @Override
     public void decorateCheckoutCommand(GitSCM scm, Run<?, ?> build, GitClient git, TaskListener listener, CheckoutCommand cmd) throws IOException, InterruptedException, GitException {
-        listener.getLogger().println("Enabling Git LFS checkout");
+        listener.getLogger().println("Enabling Git LFS pull");
         cmd.withLFS();
     }
-    
-    
 
     @Extension
     public static class DescriptorImpl extends GitSCMExtensionDescriptor {
